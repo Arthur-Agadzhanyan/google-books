@@ -1,11 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import Main from "./pages/Main";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+
+
+const App: FC = () => {
   return (
-    <>
-      <Main/>
-    </>
+    <Router>
+      <Switch>
+
+        <Route path="/" exact>
+          <Main />
+        </Route>
+        
+      </Switch>
+    </Router>
   );
 }
 

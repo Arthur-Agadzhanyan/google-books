@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import Store from './store/store';
+
+interface State {
+  store: Store
+}
+
+const store = new Store()
+
+export const Context = createContext<State>({
+  store
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Context.Provider value={{ store }}>
       <App />
-    </Provider>
+    </Context.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

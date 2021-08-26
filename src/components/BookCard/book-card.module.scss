@@ -11,8 +11,10 @@
     margin-top: 60px;
 
     .book__image{
+        display: block;
         height: 200px;   
         margin-bottom: 10px;
+        box-shadow: 5px 10px 16px rgb(87, 87, 87);
     }
 
     .book__info{
@@ -32,8 +34,8 @@
         }
     
         .book__author{
+            padding: 2px 0px;
             color: #bec0c2;
-    
         }
     }
 
