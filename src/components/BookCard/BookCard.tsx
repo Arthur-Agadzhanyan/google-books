@@ -3,14 +3,15 @@ import { observer } from 'mobx-react-lite';
 import styles from "./book-card.module.scss"
 import { BookCardProps } from './interfaces';
 import undefinedImage from '../../assets/undefined_book.png'
+import { Link } from 'react-router-dom';
 
-const BookCard: FC<BookCardProps> = ({img,title,categories,authors}) => {
+const BookCard: FC<BookCardProps> = ({id,img,title,categories,authors}) => {
 
     return (
-        <div className={styles.book}>
+        <Link to={`/books/${id}`} className={styles.book}>
             
-            {img 
-                ? <img className={styles.book__image} src={img.smallThumbnail} alt="Изображение книги"/>
+            {img && img.thumbnail 
+                ? <img className={styles.book__image} src={img.thumbnail} alt="Изображение книги"/>
                 : <img className={styles.book__image} src={undefinedImage} alt="Изображение книги"/>
             }
 
@@ -28,7 +29,7 @@ const BookCard: FC<BookCardProps> = ({img,title,categories,authors}) => {
 
             </div>
         
-        </div>
+        </Link>
     );
 }
 

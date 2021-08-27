@@ -1,0 +1,108 @@
+.book{
+    display: flex;
+
+    justify-content: space-between;
+
+    .book__image_container{
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex: 0 1 40%;
+        background: #f3f2f1; 
+
+        .image{
+            max-width: 90%;
+            min-height: 70vh;
+            @media screen and (max-width: 991px) {
+                max-height: 50vh;
+                min-height: 60vh;
+
+            }
+        }
+    }
+
+    .book__info{
+        display: flex;
+        align-items: center;
+
+        flex: 0 1 60%;
+
+        .info__container{
+            max-width: 85%;
+            padding: 25px;
+
+            .info__categories{
+                color: #bec0c2
+            }
+            .info__title{
+                font-size: 40px;
+                color: #202020;
+                margin: 20px 0px;
+            }
+    
+            .info__author{
+                padding: 5px 0px;
+                color: #aaa;
+                text-decoration: underline;
+            }
+    
+            .info__description{
+                margin-top: 30px;
+                width: 100%;
+                padding: 15px;
+                border: 1px solid #dee1e4;
+                border-radius: 5px;
+                line-height: 28px;
+
+                ul{
+                    padding-left: 20px
+                }
+
+            }
+        }  
+        
+        @media screen and (max-width: 1700px) {
+            .info__container{
+                max-width: 95%;
+            }
+        }
+        @media screen and (max-width: 1300px) {
+            .info__container{
+                max-width: 100%;
+                .info__title{
+                    font-size: 35px;
+                }
+            }  
+        }
+        
+    }
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
+
+        .book__image_container{
+            height: 100vh;
+        }
+        .book__info{
+            min-height: 100vh;
+        } 
+    }
+    .go_back_container{
+        margin: 30px 0px;
+        .go_back{
+            color: #202020;
+            border: 1px solid #202020;
+            text-decoration: none;
+            padding: 10px 20px;
+    
+            transition: all .2s linear;
+            &:hover{
+                background: #202020;
+                color: #fff;
+            }
+        }
+    }
+    
+}

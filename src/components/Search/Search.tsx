@@ -27,31 +27,30 @@ const Search = () => {
     const [sorting, setSorting] = useState("relevance");
     const [inputValue, setInputValue] = useState("")
 
-    const [currentPage, setCurrentPage] = useState(0);
-    const [fetching, setFetching] = useState(true);
+    const [currentPage, setCurrentPage] = useState(store.books.length ? store.books.length - 1 : 0);
+    const [fetching, setFetching] = useState(store.books.length ? false : true);
 
     useEffect(() => {
         if(fetching){
             store.getBooks(inputValue,category,sorting,currentPage,setCurrentPage)
             setFetching(false)
         }
-    }, [fetching]);
+    }, [fetching,store,inputValue,category,sorting,currentPage,setCurrentPage]);
 
-    // useEffect(() => {
-    //     document.addEventListener('scroll', scrollHandler)
-    //     return function () {
-    //         document.removeEventListener('scroll', scrollHandler)
-    //     }
+    useEffect(() => {
+        const scrollHandler = (e: any) => {
+            if (window) {
+                if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && store.books.length < store.totalItems && !store.loading) {
+                    setFetching(true)
+                }
+            }
+        }
 
-    // }, [fetching])
-
-    // const scrollHandler = (e: any) => {
-    //     if (window) {
-    //         if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && users.length < totalCount) {
-    //             setFetching(true)
-    //         }
-    //     }
-    // }
+        document.addEventListener('scroll', scrollHandler)
+        return function () {
+            document.removeEventListener('scroll', scrollHandler)
+        }
+    }, [fetching,store])
 
     const changeSorting = (select: { value: string; label: string; } | null)=>{
         if(select){
@@ -77,6 +76,7 @@ const Search = () => {
 
     const search = (e: FormEvent)=>{
         e.preventDefault()
+        
         if(inputValue.trim()){
             setCurrentPage(0)
             setFetching(true)
@@ -88,6 +88,7 @@ const Search = () => {
         <header className={styles.search}>
             <div className={styles.search__container}>
                 <h1 className={styles.search__title}>Search for books</h1>
+
                 <form onSubmit={search}>
                     <input 
                         type="text" 
@@ -97,6 +98,7 @@ const Search = () => {
                         onChange={handleInputChange}
                     />
                 </form>
+
                 <div className={styles.sort}>
 
                     <div className={styles.sort__item}>

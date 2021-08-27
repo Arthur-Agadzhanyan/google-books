@@ -8,3 +8,14 @@
     padding: 20px 15px;
     margin: 0 auto;
 }
+
+.not_found{
+    padding: 10px;
+    margin: 50px 0px;
+    text-align: center;
+    color: #aaa;
+
+    @media screen and (max-width:600px){
+        font-size: 25px;
+    }
+}

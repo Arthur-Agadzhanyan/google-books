@@ -1,0 +1,38 @@
+.pusher {
+  background: rgba(0,0,0,.1);;
+  height: 5px;
+  margin: 0px auto;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+  
+  &::before,
+  &::after {
+    background: rgba(0,0,0,.8);
+    content: '';
+    display: block;
+    height:  5px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate3d(-100%,0,0);
+    width: 50%;
+  }
+  
+  &::before {
+    animation: pusher 2s infinite;
+  }
+  
+  &::after {
+    animation: pusher 2s -1s infinite;
+  }
+}
+
+@keyframes pusher {
+  0% {
+    transform: translate3d(-100%,0,0);
+  }
+  100% {
+    transform: translate3d(200%,0,0);
+  }
+}

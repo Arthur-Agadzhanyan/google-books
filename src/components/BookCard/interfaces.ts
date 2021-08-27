@@ -1,4 +1,5 @@
 export interface BookCardProps{
+    id: string,
     img: {
         smallThumbnail: string,
         thumbnail: string,      
