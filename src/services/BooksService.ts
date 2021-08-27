@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://www.googleapis.com/books/v1/volumes"
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export default class BooksService {
 
@@ -10,17 +11,14 @@ export default class BooksService {
         const maxBooks = 30
 
         const qV = queryValue ? `+${queryValue}` : ""
-
-        console.log(`${API_URL}?q=${ctg}${qV}&printType=books&orderBy=${sorting}&maxResults=${maxBooks}&startIndex=${currentPage}&${fields}`);
         
-
-        return axios.get(`${API_URL}?q=${ctg}${qV}&printType=books&orderBy=${sorting}&maxResults=${maxBooks}&startIndex=${currentPage}&${fields}`)
+        return axios.get(`${API_URL}?q=${ctg}${qV}&printType=books&orderBy=${sorting}&maxResults=${maxBooks}&startIndex=${currentPage}&${fields}&key=${API_KEY}`)
     }
 
     static async getDetailsOfBook(id: string){
         const fields = `fields=volumeInfo(title,categories,authors,imageLinks,description)`
 
-        return axios.get(`${API_URL}/${id}?${fields}`)
+        return axios.get(`${API_URL}/${id}?${fields}&key=${API_KEY}`)
     }
 
 }

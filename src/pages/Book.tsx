@@ -37,11 +37,12 @@ const Book = () => {
                 {imageLinks 
                     ? <img className={styles.image} src={imageLinks.thumbnail} alt="Изображение книги"/>
                     : <img className={styles.image} src={undefinedImage} alt="Изображение книги"/>
-                    
                 }
             </div>
+
             <div className={styles.book__info}>
                 <div className={styles.info__container}>
+
                     <p className={styles.info__categories}>
                         {categories && categories.join(" / ")}
                     </p>
@@ -58,8 +59,10 @@ const Book = () => {
                     <div className={styles.go_back_container}>
                         <Link to="/" className={styles.go_back}>Go back</Link>
                     </div>
+
                 </div>
             </div>
+
         </div>
     );
 }

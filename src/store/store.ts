@@ -38,8 +38,6 @@ export default class Store {
                 const res = await BooksService.getBooks(queryValue,category,sorting,currentPage)
                 setCurrentPage(prev=>prev= prev + 29)
 
-                console.log(res.data)
-
                 this.setTotalItems(res.data.totalItems)
                 this.setBooks([...this.books, ...res.data.items])
 
@@ -55,7 +53,6 @@ export default class Store {
         this.setLoading(true)
         try {
             const res = await BooksService.getDetailsOfBook(id)
-            console.log(res.data)
 
             this.setDetailBook(res.data.volumeInfo)
         } catch (error) {

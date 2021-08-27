@@ -16,10 +16,11 @@
         .image{
             max-width: 90%;
             min-height: 70vh;
+            box-shadow: 5px 10px 16px rgb(87, 87, 87);
+
             @media screen and (max-width: 991px) {
                 max-height: 50vh;
                 min-height: 60vh;
-
             }
         }
     }
