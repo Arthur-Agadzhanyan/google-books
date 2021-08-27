@@ -4,6 +4,7 @@
     justify-content: space-between;
 
     .book__image_container{
+        position: relative;
         min-height: 100vh;
 
         display: flex;
@@ -21,6 +22,15 @@
             @media screen and (max-width: 991px) {
                 max-height: 50vh;
                 min-height: 60vh;
+            }
+        }
+        .arrow{
+            display: none;
+            position: absolute;
+            font-size: 35px;
+            bottom: 3px;
+            @media screen and (max-width: 991px) {
+                display: block;
             }
         }
     }

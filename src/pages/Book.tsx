@@ -38,6 +38,7 @@ const Book = () => {
                     ? <img className={styles.image} src={imageLinks.thumbnail} alt="Изображение книги"/>
                     : <img className={styles.image} src={undefinedImage} alt="Изображение книги"/>
                 }
+                <p className={styles.arrow}>☟</p>
             </div>
 
             <div className={styles.book__info}>
