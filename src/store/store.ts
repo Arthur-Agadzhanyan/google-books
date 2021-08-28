@@ -5,11 +5,11 @@ import BooksService from "../services/BooksService"
 import { BookInfo } from "../models/response/BookInfo"
 
 export default class Store {
-    books: BookInfo[] = [] as BookInfo[]
-    detailBook: DetailBookInfo = {} as DetailBookInfo
+    books: BookInfo[] = [] as BookInfo[] // Все книги на странице "/"
+    detailBook: DetailBookInfo = {} as DetailBookInfo // Детальная информация об одной книге
 
-    totalItems: number = 0
-    loading: boolean = false
+    totalItems: number = 0 // Общее количество книг, которые можем получить по запросу
+    loading: boolean = false // Загрузка
 
     constructor() {
         makeAutoObservable(this)

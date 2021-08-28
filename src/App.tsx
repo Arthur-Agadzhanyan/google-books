@@ -3,8 +3,6 @@ import Main from "./pages/Main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Book from "./pages/Book";
 
-
-
 const App: FC = () => {
   return (
     <Router>

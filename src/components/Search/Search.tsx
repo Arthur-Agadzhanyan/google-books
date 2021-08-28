@@ -19,7 +19,6 @@ const sortingBy = [
     { value: 'newest', label: 'newest' },
 ] 
 
-
 const Search = () => {
     const {store} = useContext(Context)
 
@@ -30,6 +29,7 @@ const Search = () => {
     const [currentPage, setCurrentPage] = useState(store.books.length ? store.books.length - 1 : 0);
     const [fetching, setFetching] = useState(store.books.length ? false : true);
 
+    // При fetching === true начинает загружать следующие 30 книг
     useEffect(() => {
         if(fetching){
             store.getBooks(inputValue,category,sorting,currentPage,setCurrentPage)
@@ -37,6 +37,7 @@ const Search = () => {
         }
     }, [fetching,store,inputValue,category,sorting,currentPage,setCurrentPage]);
 
+    // Подгрузка книг при скролле страницы
     useEffect(() => {
         const scrollHandler = (e: any) => {
             if (window) {
@@ -52,6 +53,7 @@ const Search = () => {
         }
     }, [fetching,store])
 
+    // При изменении select сортировки
     const changeSorting = (select: { value: string; label: string; } | null)=>{
         if(select){
             setSorting(select.value)
@@ -61,6 +63,7 @@ const Search = () => {
         }
     }
 
+    // При изменении select категорий
     const changeCategory = (select: { value: string; label: string; } | null)=>{
         if(select){
             setCategory(select.value)
@@ -70,10 +73,12 @@ const Search = () => {
         }
     }
 
+    // При изменении поля для поиска книг
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>)=>{
         setInputValue(e.target.value)
     }
 
+    // При отправке данных из формы
     const search = (e: FormEvent)=>{
         e.preventDefault()
         
