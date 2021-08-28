@@ -3,8 +3,7 @@ import styles from "./loader.module.scss"
 
 const Loader = () => {
     return (
-        <div className={styles.pusher}>
-        </div>
+        <div className={styles.pusher}></div>
     );
 }
 

@@ -6,11 +6,11 @@ const API_KEY = process.env.REACT_APP_API_KEY
 export default class BooksService {
 
     static async getBooks(queryValue:string,category:string, sorting:string,currentPage: number){
-        const ctg = category === "all" ? "projection:full" : `subject:${category}`
+        const ctg = category === "all" ? "all" : `subject:${category}`
         const fields = `fields=kind,totalItems,items(id,volumeInfo(title,categories,authors,imageLinks))`
         const maxBooks = 30
 
-        const qV = queryValue ? `+${queryValue}` : ""
+        const qV = queryValue ? `+intitle:${queryValue}` : ""
         
         return axios.get(`${API_URL}?q=${ctg}${qV}&printType=books&orderBy=${sorting}&maxResults=${maxBooks}&startIndex=${currentPage}&${fields}&key=${API_KEY}`)
     }
