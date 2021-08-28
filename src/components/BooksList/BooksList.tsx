@@ -15,6 +15,11 @@ const BooksList = () => {
 
     return (
         <>
+        {
+            !store.loading && store.books.length && (
+                <p className={styles.total_books}>Found {store.totalItems} books</p>
+            )
+        }
             <div className={styles.books_list}>
                 {
                     store && store.books.length

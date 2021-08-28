@@ -5,8 +5,14 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
-    padding: 20px 15px;
+    padding: 0px 15px 20px 15px;
     margin: 0 auto;
+}
+
+.total_books{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .not_found{
